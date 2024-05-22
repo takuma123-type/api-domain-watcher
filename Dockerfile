@@ -1,4 +1,5 @@
-FROM ruby:3.2
+# Dockerfile
+FROM ruby:3.1.4
 
 # 必要なパッケージのインストール
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
@@ -11,7 +12,8 @@ WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 
-# Gemをインストール
+# 必要なRubyGemsのインストール
+RUN gem install bundler:2.3.7
 RUN bundle install
 
 # アプリケーションのソースコードをコピー

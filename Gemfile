@@ -35,6 +35,8 @@ gem 'nokogiri'
 
 gem 'dotenv-rails'
 
+gem "rack-cors"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

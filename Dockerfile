@@ -1,20 +1,19 @@
-# Dockerfile
-FROM ruby:3.1.4
+FROM ruby:3.2.2
 
-# 必要なパッケージのインストール
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get update -qq && apt-get install -y default-mysql-client
 
-# アプリケーションディレクトリの作成
 RUN mkdir /myapp
 WORKDIR /myapp
 
-# GemfileとGemfile.lockをコピー
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-
-# 必要なRubyGemsのインストール
-RUN gem install bundler:2.3.7
 RUN bundle install
-
-# アプリケーションのソースコードをコピー
 COPY . /myapp
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

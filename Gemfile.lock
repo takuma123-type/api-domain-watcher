@@ -252,7 +252,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
-  rails (~> 7.0.8, >= 7.0.8.3)
+  rails (~> 7.0.8, >= 7.0.8.1)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
@@ -261,7 +261,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.4p223
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.3.7
